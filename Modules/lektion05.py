@@ -13,6 +13,7 @@ print(f"After dropping: {len(dropped)}")
 # Indlæser pokemon data i et dataframe
 raw_pokemon = pd.read_csv(r"Data\pokemon.csv", sep=',', index_col='#')
 print(raw_pokemon)
+print(raw_pokemon.isna().sum())
 
 # Fjerner rækker med manglende værdier
 cleaned_pokemon = raw_pokemon.dropna()
@@ -21,5 +22,6 @@ print(cleaned_pokemon)
 # Opretter plt objekt
 fig = plt.figure()
 # Plotter histogram over HP feature
-axis = cleaned_pokemon["HP"].plot.hist()
+# axis = cleaned_pokemon["HP"].plot.hist()
+axis = cleaned_pokemon["Speed"].plot.hist()
 plt.show()

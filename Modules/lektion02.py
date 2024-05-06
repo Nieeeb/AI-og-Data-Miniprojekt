@@ -3,6 +3,7 @@ from sqlite3 import Error
 
 # Funktioner der forbinder til en eksisterende database
 # Hvis der ikke er en database i path, oprettes der en ny
+# Ikke skabt af mig
 def create_connection(path):
     connection = None
     try:
@@ -14,6 +15,7 @@ def create_connection(path):
     return connection
 
 # Funktioner der gen udføre tilføjelser til databaser
+# Ikke skabt af mig
 def execute_query(connection, query):
     cursor = connection.cursor()
     try:
@@ -24,6 +26,7 @@ def execute_query(connection, query):
         print(f"The error '{e}' occurred")
 
 # Funktion der kan læse fra en database
+# Ikke skabt af mig
 def execute_read_query(connection, query):
     cursor = connection.cursor()
     result = None
@@ -35,7 +38,7 @@ def execute_read_query(connection, query):
         print(f"The error '{e}' occurred")
 
 # Oprettelse af Database
-connection = create_connection("Data\school.sqlite")
+connection = create_connection("Data\school.db")
 
 # SQL for students tabel
 create_students_table = """
@@ -122,11 +125,11 @@ matches = execute_read_query(connection, elizabeth_courses)
 print(matches)
 
 # Finder alle studenter der er i english kursus og finder deres navn ud fra student id i student tabel
-find_all_english_students = """
+find_all_math_students = """
 SELECT s.student_name
 FROM students AS s, enrollments AS e, courses AS c
-WHERE c.course_name = 'English' AND e.course_id = c.course_id AND s.student_id = e.student_id
+WHERE c.course_name = 'Math' AND e.course_id = c.course_id AND s.student_id = e.student_id
 """
-english_students = execute_read_query(connection, find_all_english_students)
-# print(english_students)
+math_students = execute_read_query(connection, find_all_math_students)
+print(math_students)
 

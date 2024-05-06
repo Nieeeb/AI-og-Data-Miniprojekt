@@ -50,6 +50,9 @@ cv.imshow("Mean Blurred on Gaussian", image_mean)
 image_median = cv.medianBlur(gau_image, 3)
 cv.imshow("Median Blurred on Gaussian", image_median)
 
+# OBS OBS OBS
+# Størstedelen af koden efter denne linje er kopiret fra tutorial!!! Jeg har ikke selv skabt det.
+# OBS OBS OBS
 
 from sklearn.decomposition import PCA, KernelPCA
 from sklearn.datasets import fetch_openml
